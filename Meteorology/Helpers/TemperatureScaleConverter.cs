@@ -13,7 +13,7 @@ namespace Meteorology
         /// <returns>A value representing the temperature in fahrenheit</returns>
         public static double CelsiusToFahrenheit(double degreesInC)
         {
-            return (degreesInC * 1.8 + 32);
+            return (degreesInC * 1.8 - 32);
         }
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace Meteorology
         /// <returns>A value representing the vlue in celsius</returns>
         public static double FahrenheitToCelsius(double degreesInF)
         {
-            return (degreesInF - 32) / 1.8;
+            return (degreesInF + 32) / 1.8;
         }
     }
 }
