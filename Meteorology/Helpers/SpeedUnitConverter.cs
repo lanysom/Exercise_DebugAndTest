@@ -6,14 +6,14 @@ namespace Meteorology
 {
     static class SpeedUnitConverter
     {
-        public static double ConverMilesPerHourToMeterPerSecond(double windInMilesPerHour)
+        public static double ConvertMilesPerHourToMeterPerSecond(double windInMilesPerHour)
         {
             return windInMilesPerHour * 0.44704;
         }
 
-        public static double ConverMeterPerSecondToMilesPerHour(double windInMeterPerSecond)
+        public static double ConvertMeterPerSecondToMilesPerHour(double windInMeterPerSecond)
         {
-            // 0.34704 must be 0.44704
+            // this line is return windInMeterPerSecond * 2.23694 or return windInMeterPerSecond / 0.44704
             return windInMeterPerSecond * 2.23694;
         }
     }
