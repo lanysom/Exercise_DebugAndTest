@@ -4,14 +4,14 @@ using System.Text;
 
 namespace Meteorology
 {
-    class SpeedUnitConverter
+    static class SpeedUnitConverter
     {
-        public double ConverMilesPerHourToMeterPerSecond(int windInMilesPerHour)
+        public static double ConverMilesPerHourToMeterPerSecond(double windInMilesPerHour)
         {
             return windInMilesPerHour * 0.44704;
         }
 
-        public double ConverMeterPerSecondToMilesPerHour(int windInMeterPerSecond)
+        public static double ConverMeterPerSecondToMilesPerHour(double windInMeterPerSecond)
         {
             // 0.34704 must be 0.44704
             return windInMeterPerSecond / 0.44704;

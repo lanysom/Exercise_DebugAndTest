@@ -11,7 +11,7 @@ namespace Meteorology
         /// </summary>
         /// <param name="degreesInC">The temperature in celsius</param>
         /// <returns>A value representing the temperature in fahrenheit</returns>
-        public static double CelsiusToFahrenheit(int degreesInC)
+        public static double CelsiusToFahrenheit(double degreesInC)
         {
             return (degreesInC * 1.8 + 32);
         }
