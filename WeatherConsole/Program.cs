@@ -13,14 +13,16 @@ namespace WeatherConsole
 
             double inputDegree = 5.0;
             double inputSpeed = 9.0;
+            SpeedUnit speedUnit = SpeedUnit.MeterPerSecond;
+            TemperatureScale temperatureScale = TemperatureScale.Celsius;
 
-            WindChillFactor windChillFactor = new WindChillFactor(SpeedUnit.MeterPerSecond, TemperatureScale.Celsius);
-            double result = windChillFactor.CalulateChillFactorTemperature(inputDegree, inputSpeed);
+            WindChillFactor windChillFactor = new WindChillFactor(speedUnit, temperatureScale);
+            double result = windChillFactor.CalulateChillFactorTemperature(inputSpeed, inputDegree);
 
             // Print input values and resulting temperature.
-            Console.WriteLine("Temperature: {0}", inputDegree);
-            Console.WriteLine("Wind: {0}", inputSpeed);
-            Console.WriteLine("Chill Factor: {0}", result);
+            Console.WriteLine("Temperature: {0} {1}", inputDegree, temperatureScale);
+            Console.WriteLine("Wind: {0} {1}", inputSpeed, speedUnit);
+            Console.WriteLine("Calculated Chill Factor: {0}", result);
         }
     }
 }
