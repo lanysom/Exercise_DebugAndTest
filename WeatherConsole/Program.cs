@@ -17,7 +17,7 @@ namespace WeatherConsole
             TemperatureScale temperatureScale = TemperatureScale.Celsius;
 
             WindChillFactor windChillFactor = new WindChillFactor(speedUnit, temperatureScale);
-            double result = windChillFactor.CalulateChillFactorTemperature(inputSpeed, inputDegree);
+            double result = windChillFactor.Calulate(inputSpeed, inputDegree);
 
             // Print input values and resulting temperature.
             Console.WriteLine("Temperature: {0} {1}", inputDegree, temperatureScale);

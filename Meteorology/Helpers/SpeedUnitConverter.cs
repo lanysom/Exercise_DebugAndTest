@@ -4,17 +4,17 @@ using System.Text;
 
 namespace Meteorology
 {
-    static class SpeedUnitConverter
+    public class SpeedUnitConverter
     {
-        public static double ConvertMilesPerHourToMeterPerSecond(double windInMilesPerHour)
+        public double ConvertMilesPerHourToMeterPerSecond(double windInMilesPerHour)
         {
-            return windInMilesPerHour * 0.44704;
+            return Math.Round(windInMilesPerHour * 0.44704, 5);
         }
 
-        public static double ConvertMeterPerSecondToMilesPerHour(double windInMeterPerSecond)
+        public double ConvertMeterPerSecondToMilesPerHour(double windInMeterPerSecond)
         {
             // this line is return windInMeterPerSecond * 2.23694 or return windInMeterPerSecond / 0.44704
-            return windInMeterPerSecond * 2.23694;
+            return Math.Round(windInMeterPerSecond * 2.23694, 5);
         }
     }
 }

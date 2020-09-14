@@ -7,6 +7,9 @@ namespace Meteorology
         public SpeedUnit SpeedUnit { get; }
         public TemperatureScale TemperatureScale { get; }
 
+        private TemperatureScaleConverter _temperatureScaleConverter = new TemperatureScaleConverter();
+        private SpeedUnitConverter _speedUnitConverter = new SpeedUnitConverter();
+
         /// <summary>
         /// Creates an instance of the WindChillFactor class.
         /// </summary>
@@ -21,18 +24,23 @@ namespace Meteorology
         /// <summary>
         /// Uses formula from https://www.weather.gov/media/epz/wxcalc/windChill.pdf 
         /// </summary>
-        public double CalulateChillFactorTemperature(double windSpeed, double temperature)
+        public double Calulate(double windSpeed, double temperature)
         {
+            if(temperature >= 50)
+            {
+                throw new Exception("Temperature is too high");
+            }
+
             // The input to the formula must be in fahrenheit, so if the parameter value is in celsius it needs to be converted
             if (TemperatureScale == TemperatureScale.Celsius)
             {
-                temperature = TemperatureScaleConverter.CelsiusToFahrenheit(temperature);
+                temperature = _temperatureScaleConverter.CelsiusToFahrenheit(temperature);
             }
 
             // The input to the formula must be in miles per hour, so if the parameter value is in meters it needs to be converted
             if (SpeedUnit == SpeedUnit.MeterPerSecond)
             {
-                windSpeed = SpeedUnitConverter.ConverMeterPerSecondToMilesPerHour(windSpeed);
+                windSpeed = _speedUnitConverter.ConvertMeterPerSecondToMilesPerHour(windSpeed);
             }
 
             // Calculate the formula part and finally combine them
@@ -46,7 +54,7 @@ namespace Meteorology
             // If input was in Celsius, the output should be as well
             if (TemperatureScale == TemperatureScale.Celsius)
             {
-                chillDegreeResult = TemperatureScaleConverter.FahrenheitToCelsius(chillDegreeResult);
+                chillDegreeResult = _temperatureScaleConverter.FahrenheitToCelsius(chillDegreeResult);
             }
 
             return Math.Round(chillDegreeResult, 1);
